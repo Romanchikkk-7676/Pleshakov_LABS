@@ -44,5 +44,95 @@ cp config/* /mnt/common_volume/swarm/grafana/config/ . Команда `cp config
 mv grafana.yaml docker-compose.yaml. Команда `mv grafana.yaml docker-compose.yaml` переименовывает файл `grafana.yaml` в `docker-compose.yaml` в текущей рабочей директории. Если файл `docker-compose.yaml` уже существует, он будет перезаписан.
 ![image](https://github.com/user-attachments/assets/66ce9fca-14cc-4e95-8c22-6a1369f8ef4a) 
 sudo docker compose up -d. Команда `sudo docker compose up -d` запускает контейнеры, описанные в файле `docker-compose.yaml` в detached режиме (в фоне).
-![image](https://github.com/user-attachments/assets/bb05b3c4-bef5-4589-a481-3df0d46c020b)   ![image](https://github.com/user-attachments/assets/51ff6d94-cae1-4343-a4f8-ed24349d79da)
+![image](https://github.com/user-attachments/assets/bb05b3c4-bef5-4589-a481-3df0d46c020b)   
+
+![image](https://github.com/user-attachments/assets/51ff6d94-cae1-4343-a4f8-ed24349d79da)
+
+# ЛАБОРАТОРНАЯ РАБОТА №4
+ключ `-d` означает, что мы вошли в detached mode (фоновый режим)
+
+Запуск контейнеров Docker
+`sudo docker compose up -d`
+
+![image](https://github.com/user-attachments/assets/58db6358-b995-4730-b5bf-ddae0d5c778e)
+
+
+Остановка контейнеров Docker
+`sudo docker compose stop`
+
+![image](https://github.com/user-attachments/assets/411e3b32-7b15-4562-b8f7-826dee36f0d8)
+
+
+Удаление контейнеров Docker
+`sudo docker compose down`
+
+![image](https://github.com/user-attachments/assets/279e9b6a-2b78-4ec5-baa4-df13bd8c4dc1)
+
+
+Показывает статус всех контейнеров
+`sudo docker compose ps`
+
+![image](https://github.com/user-attachments/assets/ef1e0e77-9583-4f6c-8260-f351f5745c00)
+
+Клонирую репозиторий 
+`git clone https://github.com/Romanchikkk-7676/Pleshakov_LABS.git`
+
+![image](https://github.com/user-attachments/assets/8a0127ae-a898-4880-b8e9-d60658074877)
+
+Сделал Бекап файла `docker-compose.yaml`
+
+и переместил файлы в корень папки
+`mv Pleshakov_LABS/prometeus.yaml ./`
+`mv Pleshakov_LABS/docker-compose.yaml ./`
+
+![image](https://github.com/user-attachments/assets/240d3829-3199-41d9-aedf-2929e26266f2)
+
+
+# ЛАБОРАТОРНАЯ РАБОТА №5
+
+Файл перемещаем `prometeus.yaml` -> `/mnt/common_volume/swarm/grafana/config/`
+`sudo mv prometeus.yaml /mnt/common_volume/swarm/grafana/config/`
+
+Сделал Бекап файла `prometeus.yaml` в `/mnt/common_volume/swarm/grafana/config/`
+
+Нужно переименовываю файл в `prometheus.yaml`
+
+Поднял Docker:
+`sudo docker compose up -d`
+
+Зашел в него через браузер:
+`localhost:3000`
+
+Пароль и логин
+admin:admin
+
+1. Создание нового источника данных в Grafana
+  1. Перешел в `Home -> Connections -> Data sources`.
+  2. Нажал `Add data source`.
+  3. В открывшемся списке выберал `Prometheus`.
+  4. Настройте параметры подключения:
+    - Connection: `http://prometheus:9090`
+    - Authentication: Включите Basic authentication.
+  5. После настройки нажал `Save & Test`, чтобы проверить подключение.
+
+![image](https://github.com/user-attachments/assets/678bc0da-5504-4b96-b0ce-1c8d1a587535)
+
+2. Перешел в `Home -> Dashboards -> Import dashboard`.
+  1. В поле ввода указал ID шаблона: 1860.
+  2. Нажал `Load`.
+  3. В появившемся окне:
+    - Выберал источник данных `Prometheus`.
+  4. Нажал `Import`.
+
+![image](https://github.com/user-attachments/assets/e88f8ed7-88b8-475f-a441-599c27c38a19)
+
+![image](https://github.com/user-attachments/assets/847cda23-3b2a-4f4f-92b6-d29f86b6f705)
+
+
+Рузультат:
+
+![image](https://github.com/user-attachments/assets/deb04a08-d785-44ee-af57-5a51319ef6fa)
+
+
+# ЛАБОРАТОРНАЯ РАБОТА №6
 
