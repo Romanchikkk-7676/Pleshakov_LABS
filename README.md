@@ -136,3 +136,36 @@ admin:admin
 
 # ЛАБОРАТОРНАЯ РАБОТА №6
 
+В терминал ввел:
+`echo -e "# TYPE light_metric1 gauge\nlight_metric1 0" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus` - она отправляет бинарные данные
+
+![image](https://github.com/user-attachments/assets/bcb41b8a-fe78-4d7a-9d61-2c72a5498c87)
+
+1. Перешел в `Home -> Connections -> Data sources`.
+2. Нажал `Add data source`.
+3. В открывшемся списке выберал `Prometheus`.
+4. Настройте параметры подключения:
+  - Переминовываем: `vica 1`
+  - Connection: `http://victoriametrics:8428`
+5. После настройки нажал `Save & Test`, чтобы проверить подключение.
+
+![image](https://github.com/user-attachments/assets/a261d77c-6835-42ba-8116-585ac96b97bc)
+
+Ввел в `code` `light_metric1`  со значением `0`
+
+![image](https://github.com/user-attachments/assets/10bbf270-2e78-4651-8cee-41689d20d332)
+
+После это ввел в команду `echo -e "# TYPE light_metric1 gauge\nlight_metric1 0" | curl --data-binary @- http://localhost:8428/api/v1/import/prometheus` вместо `0` написал свои числа, у меня это: `0` `66` `33`
+
+Получается вот такой график:
+
+![image](https://github.com/user-attachments/assets/776f1cd8-f92c-414f-b157-0e1e2cf53bbd)
+
+
+Cправа в поиске написал `Connect null values` и нажал `always` 
+
+Что эта функция делает:
+ - Она соединяет график линиями
+
+![image](https://github.com/user-attachments/assets/5b2ddb6e-74ff-4055-9977-a5ed0516c746)
+
